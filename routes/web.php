@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\PostsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +18,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ============= Day 3 Task ============
+
+Route::get('login', [LoginController::class, 'create'])->name('login');
+  
+
+Route::post('logged', [ LoginController::class, 'store'])->name('logged');
+    
+//====day 3 Online Session =============
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// Route::get('login', function () {
+//     return view('login');
+// });
+
+// Route::post('logged', function () {
+//     return 'You are logged in';
+// })->name('logged');
+
+Route::get('control',[ ExampleController::class,'show']);
+
+
+//=============== Day 2 Tasks ======================================
+
+
 
 
 Route::get('about', function () {
@@ -54,6 +85,38 @@ Route::prefix('blog')->group(function(){
     });
     
 });
+
+
+
+        // store data into car table
+       // Route::get('storeCar',[CarController::class,'store']);
+
+
+     //Route for car table
+    //  Route::get('createCar', [CarController::class, 'create']);
+
+    //  Route::post('storeCar', [CarController::class, 'store'])->name('storeCar');
+        Route::get('cars',[CarController::class,'index']);
+        Route::get('storecar',[CarController::class,'store']);
+        Route::get('createcar',[CarController::class,'create']);
+        Route::post('storecar',[CarController::class,'store'])->name('storecar');
+
+
+Route::get('cars', function () {
+    return view('cars');
+});
+
+Route::get('addPosts', function () {
+    return view('addPosts');
+});
+Route::get('posts', function () {
+    return view('posts');
+});
+
+Route::get('updatePost', function () {
+    return view('updatePost');
+});
+
 
 //=====================================================================================
 //    session Practice
