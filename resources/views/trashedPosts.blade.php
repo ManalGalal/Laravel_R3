@@ -38,7 +38,7 @@
             @endif
 
         </td>
-        <td><a href= "restorepost/{{$post->id}} "onclick="return confirm('Are you sure you want to Restore?')"> Restore</td>
+        <td><a href= "restorePost/{{$post->id}} "onclick="return confirm('Are you sure you want to Restore?')"> Restore</td>
 
         <td><a href= "forceDelete/{{$post->id}} "onclick="return confirm('Are you sure you want to delete?')">Force Delete</td>
 
