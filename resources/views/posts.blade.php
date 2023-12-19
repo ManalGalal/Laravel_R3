@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-@include('includes.nav')
+@include('includes.navPost')
 <div class="container">
   <h2>Posts List</h2>
   <table class="table">
@@ -17,8 +17,10 @@
       <tr>
         <th>Title</th>
         <th>Desctription</th>
-        <th>created At</th>
-        <th>Action </th>
+        <th>Author</th>
+        <th>Show</th>
+        <th>Update </th>
+        <th>Delete </th>
 
       </tr>
     </thead>
@@ -28,7 +30,11 @@
         <td>{{ $post->title }}</td>
         <td>{{ $post->description }}</td>
         <td>{{ $post->author }}</td>
-        <td><a href="updatePost/{{ $post->id}}" class='btn btn-primary'>Update </a> </td>
+        <td><a href= "showPost/{{$post->id}}"> Show</td>
+        <td><a href= "updatePost/{{$post->id}}"> Update</td>
+        <td><a href= "deletePost/{{$post->id}} "onclick="return confirm('Are you sure you want to delete?')"> Delete</td>
+
+        <!-- <td><a href="updatePost/{{ $post->id}}" class='btn btn-primary'>Update </a> </td> -->
 
     @endforeach
 </tr>

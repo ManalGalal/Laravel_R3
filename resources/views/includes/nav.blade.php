@@ -5,8 +5,8 @@
         </div>
         <ul class=" nav navbar-nav">
             <li class="active"><a href="cars"> Home</a></li>
-            <li ><a href="createCar"> Insert Car</a></li>
-            <li ><a href="#"> Page 1</a></li>
+            <li ><a href="addCar"> Insert Car</a></li>
+            <li ><a href="trashed"> Trashed Car</a></li>
             <li ><a href="#"> Page 2</a></li>
         </ul>
     </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CarController;
-use App\Http\Controllers\PostsController;
+use App\Http\Controllers\PostController;
 
 
 /*
@@ -97,17 +97,19 @@ Route::prefix('blog')->group(function(){
 
     //  Route::post('storeCar', [CarController::class, 'store'])->name('storeCar');
         Route::get('cars',[CarController::class,'index']);
-        Route::get('storecar',[CarController::class,'store']);
-        Route::get('createcar',[CarController::class,'create']);
-        Route::post('storecar',[CarController::class,'store'])->name('storecar');
+        Route::get('storeCar',[CarController::class,'store']);
+        Route::get('addCar',[CarController::class,'create']);
+        Route::post('storeCar',[CarController::class,'store'])->name('storeCar');
 
 
-Route::get('cars', function () {
-    return view('cars');
-});
+// Route::get('cars', function () {
+//     return view('cars');
+// });
 
-Route::get('addPosts', function () {
-    return view('addPosts');
+
+
+Route::get('addPost', function () {
+    return view('addPost');
 });
 Route::get('posts', function () {
     return view('posts');
@@ -116,6 +118,38 @@ Route::get('posts', function () {
 Route::get('updatePost', function () {
     return view('updatePost');
 });
+
+Route::put('update/{id}',[CarController::class,'update'])->name('update');
+Route::get('showCar/{id}',[CarController::class,'show'])->name('showCar');
+Route::get('deleteCar/{id}',[CarController::class,'destroy'])->name('deleteCar');
+Route::get('forceDelete/{id}',[CarController::class,'forceDelete'])->name('forceDelete');
+Route::get('restoreCar/{id}',[CarController::class,'restore'])->name('restoreCar');
+
+Route::get('trashed',[CarController::class,'trashed'])->name('trashed');
+Route::get('Cars',[CarController::class,'index']);
+
+
+//---------------------------------------------------//
+
+
+Route::get('posts',[PostController::class,'index']);
+Route::get('storePost',[PostController::class,'store']);
+Route::get('addPost',[PostController::class,'create']);
+Route::post('storePost',[PostController::class,'store'])->name('storePost');
+
+
+//Day 6  Task.............
+
+Route::put('updatep/{id}',[PostController::class,'updatep'])->name('updatep');
+Route::get('showPost/{id}',[PostController::class,'show'])->name('showPost');
+
+Route::get('deleteCar/{id}',[PostController::class,'destroy'])->name('deleteCar');
+Route::get('forceDelete/{id}',[PostController::class,'forceDelete'])->name('forceDelete');
+Route::get('restoreCar/{id}',[PostController::class,'restore'])->name('restoreCar');
+
+Route::get('trashedPosts',[PostController::class,'trashedPosts'])->name('trashedPosts');
+Route::get('Post',[PostController::class,'index']);
+
 
 
 //=====================================================================================

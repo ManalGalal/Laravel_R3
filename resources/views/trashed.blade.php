@@ -11,15 +11,15 @@
 <body>
 @include('includes.nav')
 <div class="container">
-  <h2>Car List</h2>
+  <h2>Trashed Car List</h2>
   <table class="table">
     <thead>
       <tr>
         <th>Title</th>
         <th>Description</th>
         <th>Published</th>
-        <th>Update</th>
-        <th>Show</th>
+        <th>Restore</th>
+
         <th>Delete</th>
       </tr>
     </thead>
@@ -36,10 +36,9 @@
             @endif
 
         </td>
-        <td><a href= "updateCar/{{$car->id}}"> Update</td>
-        <td><a href= "showCar/{{$car->id}}"> Show</td>
-        
-        <td><a href= "deleteCar/{{$car->id}} "onclick="return confirm('Are you sure you want to delete?')"> Delete</td>
+        <td><a href= "restoreCar/{{$car->id}} "onclick="return confirm('Are you sure you want to Restore?')"> Restore</td>
+
+        <td><a href= "forceDelete/{{$car->id}} "onclick="return confirm('Are you sure you want to delete?')">Force Delete</td>
 
       </tr>      
       <!-- <tr class="success">

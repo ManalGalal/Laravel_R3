@@ -6,13 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 
 class CarController extends Controller
+
 {
+
+    private $columns =['title','description','published'];
     /**
      * Display a listing of the resource.
      */
     public function index()
+  
     {
-        //
+        $cars=Car::get();
+
+      return view('Cars', compact('cars'));
     }
 
     /**
@@ -27,8 +33,8 @@ class CarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    // public function store(Request $request)
+    // {
         // return dd($request->request);
     //     $cars = new Car();
     //     $cars->title = $request->title;
@@ -41,7 +47,26 @@ class CarController extends Controller
     //    ;    
     //     $cars->save();
     //     return 'Car details added successfully';
-        $data = $request->only($this->columns);
+        // $data = $request->only($this->columns);
+        
+        
+        
+
+        // $cars = Car::findOrFail($id);
+        // return view ('showcar', compact('cars'));
+
+        public function store(Request $request){
+         
+
+            $data = $request->validate([
+                'title'=>'required|string|max:50',
+                'description'=> 'required|string',
+               ]);
+               
+           $data['published'] = isset($request->published);
+           Car::create($data);
+           return redirect('cars');
+       
         $data['published']= isset($request->published);
         Car::create($data);
         return redirect('cars');
@@ -56,7 +81,8 @@ class CarController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $cars = Car::findOrFail($id);
+        return view ('showcar', compact('cars'));
     }
 
     /**
@@ -64,7 +90,11 @@ class CarController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data=$request->only($this->columns);
+        $data['published']=isset($request->published);
+        
+        car::where('id',$id)->update($data);
+        return redirect('cars');
     }
 
     /**
@@ -80,6 +110,27 @@ class CarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Car::where('id',$id)->delete();
+        return redirect('cars');
     }
+    // Update the specified resource in storage.
+    
+   public function trashed()
+   {
+    //    $cars = Car::onlyTrashed()->get();
+    //    return view('trashed', compact('cars'));
+   }
+//forcedelete
+   public function forcedelete(string $id)
+   {
+       Car::where('id',$id)->forceDelete();
+       return redirect('cars');
+   }
+
+
+   public function restore(string $id)
+   {
+       Car::where('id',$id)->restore();
+       return redirect('cars');
+   }
 }
