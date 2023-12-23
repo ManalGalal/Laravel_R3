@@ -6,16 +6,10 @@
     <title>Show Car</title>
 </head>
 <body>
-<div class="container">
-  <h2>Show car data</h2>
-  <form action="{{route('showCar',$cars->id)}}" method="post">
-    @csrf
-    <h1>{{$cars->title}}</h1>
-    <h1>{{$cars->description}}</h1>
-    <h1>{{$cars->created_at}}</h1>
-    <h1>{{$cars->updated_at}}</h1>
-    <p>{{ $cars->published? "Published" : "Not Published" }}</p>
-    
-    </div>
+    <h1>{{ $car->title }}</h1>
+    <h5>Created at: {{ $car->created_at }}</h5>
+    <h5>{{ $car->updated_at }}</h5>
+    <p>{{ $car->description }}</p>
+    <p>{{($car->published)?"Published":"Not Published"}}</p>
 </body>
 </html>
