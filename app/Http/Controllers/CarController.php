@@ -113,6 +113,8 @@ class CarController extends Controller
         public function update(Request $request, string $id)
         {
             // Validate the request data
+
+            // return dd($request);
             $messages = $this->messages();
             $request->validate([
                 'title' => 'required|string|max:50',

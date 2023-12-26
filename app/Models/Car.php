@@ -15,4 +15,7 @@ class Car extends Model
         'published',
         'image'
         ];
+
+        
 }
+

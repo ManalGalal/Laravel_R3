@@ -32,11 +32,26 @@ Route::get('aya',[ExampleController::class,'show']);
 Route::post('imageUpload',[ExampleController::class,'upload'])->name('imageUpload');
 
 Route::get('test', function(){
-    return view('test');
+    return view('testHome');
 });
 
 Route::get('image', function(){
     return view('image');
+});
+
+Route::get('404', function(){
+    return view('404');
+});
+
+Route::get('contact', function () {
+    return view('contact');
+})->name('contact');
+
+// Route::get('contact', function(){
+//     return view('contact');
+// });
+Route::get('blogs', function(){
+    return view('blogs');
 });
 
 // Routes for the car table
