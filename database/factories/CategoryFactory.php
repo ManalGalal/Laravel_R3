@@ -12,7 +12,9 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'cat_name' => $this->faker->word, // Adjust according to your requirements
+           
+            'cat_name' =>fake()->name(),
+           // 'cat_name' => $this->faker->word, // Adjust according to your requirements
         ];
     }
 }

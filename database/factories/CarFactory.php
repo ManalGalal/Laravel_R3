@@ -36,6 +36,6 @@ class CarFactory extends Factory
             'category_id' => Category::factory(),
 
                 ];
-                
+
     }
 }
